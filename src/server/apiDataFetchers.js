@@ -12,9 +12,9 @@ const fetchCoordinates = async (locationName) => {
 
   try {
     const response = await axios.get(apiRoot, { params: queryParams });
-    const { lng, lat } = response.data.geonames[0];
-    const ok = Boolean(lng && lat);
-    const data = ok ? { latitude: lat, longitude: lng } : null;
+    const { lat: latitude, lng: longitude } = response.data.geonames[0];
+    const ok = Boolean(latitude && longitude);
+    const data = ok ? { latitude, longitude } : null;
     return { ok, data };
   } catch {
     return { ok: false, data: null };
