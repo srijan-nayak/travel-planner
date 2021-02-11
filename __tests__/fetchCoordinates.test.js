@@ -1,6 +1,6 @@
 const { fetchCoordinates } = require("../src/server/apiDataFetchers");
 
-test("Fetch coordinates for Bangalore in India", async () => {
+test("fetch coordinates", async () => {
   const { ok, data } = await fetchCoordinates("bangalore");
   if (ok) {
     const { longitude, latitude } = data;
