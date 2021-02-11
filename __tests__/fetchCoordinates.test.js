@@ -2,11 +2,10 @@ const { fetchCoordinates } = require("../src/server/apiDataFetchers");
 
 test("fetch coordinates", async () => {
   const { ok, data } = await fetchCoordinates("bangalore");
-  if (ok) {
-    const { longitude, latitude } = data;
-    expect(latitude).toBe("12.97194");
-    expect(longitude).toBe("77.59369");
-  } else {
-    expect(data).toBeNull();
-  }
+  expect(ok).toBe(true);
+  expect(data).toBeDefined();
+
+  const { latitude, longitude } = data;
+  expect(typeof latitude).toBe("string");
+  expect(typeof longitude).toBe("string");
 });
