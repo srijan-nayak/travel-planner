@@ -21,6 +21,34 @@ const fetchCoordinates = async (locationName) => {
   }
 };
 
+const fetchWeatherForecast = async (days, coordinates) => {
+  const apiRoot = "https://api.weatherbit.io/v2.0/forecast/daily";
+  const weatherbitApiKey = process.env.WEATHERBIT_API_KEY;
+  const { latitude, longitude } = coordinates;
+  const queryParams = {
+    lat: latitude,
+    lon: longitude,
+    days: days,
+    key: weatherbitApiKey,
+  };
+
+  try {
+    const response = await axios.get(apiRoot, { params: queryParams });
+    const { data: forecastArray } = response.data;
+    const {
+      temp: temperature,
+      precip: precipitation,
+      weather: { description },
+    } = forecastArray[days - 1];
+    const ok = Boolean(temperature && precipitation, description);
+    const data = ok ? { temperature, precipitation, description } : null;
+    return { ok, data };
+  } catch {
+    return { ok: false, data: null };
+  }
+};
+
 module.exports = {
   fetchCoordinates,
+  fetchWeatherForecast,
 };
