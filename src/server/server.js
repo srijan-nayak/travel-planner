@@ -13,7 +13,6 @@ app.use(express.static("public"));
 
 app.get("/coordinates/:location", async (request, response) => {
   const location = request.params["location"];
-  console.log(location);
   const fetchResponse = await fetchCoordinates(location);
   response.send(fetchResponse);
 });
