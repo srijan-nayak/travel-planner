@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.static("public"));
 
 app.get("/coordinates/:location", async (request, response) => {
-  const location = request.params["location"];
-  const fetchResponse = await fetchCoordinates(location);
+  const locationName = request.params["location"];
+  const fetchResponse = await fetchCoordinates(locationName);
   response.send(fetchResponse);
 });
 
