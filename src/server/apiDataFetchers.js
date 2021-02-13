@@ -48,7 +48,32 @@ const fetchWeatherForecast = async (days, coordinates) => {
   }
 };
 
+const fetchLocationPictureURL = async (locationName) => {
+  const apiRoot = "https://pixabay.com/api";
+  const pixabayApiKey = process.env.PIXABAY_API_KEY;
+  const queryParams = {
+    q: locationName,
+    category: "travel",
+    image_type: "photo",
+    orientation: "horizontal",
+    safesearch: "true",
+    key: pixabayApiKey,
+  };
+
+  try {
+    const response = await axios.get(apiRoot, { params: queryParams });
+    const { hits: searchResults } = response.data;
+    const { webformatURL: imageURL } = searchResults[0];
+    const ok = Boolean(imageURL);
+    const data = ok ? { imageURL } : null;
+    return { ok, data };
+  } catch {
+    return { ok: false, data: null };
+  }
+};
+
 module.exports = {
   fetchCoordinates,
   fetchWeatherForecast,
+  fetchLocationPictureURL,
 };

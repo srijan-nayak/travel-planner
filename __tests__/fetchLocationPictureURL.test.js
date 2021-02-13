@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 const { fetchLocationPictureURL } = require("../src/server/apiDataFetchers");
 
 test("fetch location picture url", async () => {
