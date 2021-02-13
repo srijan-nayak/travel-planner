@@ -40,7 +40,7 @@ const fetchWeatherForecast = async (days, coordinates) => {
       precip: precipitation,
       weather: { description },
     } = forecastArray[days - 1];
-    const ok = Boolean(temperature && precipitation, description);
+    const ok = Boolean(temperature && precipitation && description);
     const data = ok ? { temperature, precipitation, description } : null;
     return { ok, data };
   } catch {
