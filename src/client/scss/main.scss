@@ -1,6 +1,7 @@
 @use "variables";
 
 @use "header";
+@use "form";
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,16 @@ html {
 }
 
 body {
-  background-color: #d2d4c8;
+  background-color: variables.$color-background;
   min-height: 100%;
+}
+
+.title-header,
+.input-section {
+  margin-bottom: variables.$margin-base;
+}
+
+.site-main {
+  width: 95%;
+  margin: 0 auto;
 }
