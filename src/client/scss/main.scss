@@ -2,6 +2,7 @@
 
 @use "header";
 @use "form";
+@use "no-trips";
 
 * {
   box-sizing: border-box;
@@ -19,9 +20,12 @@ body {
   min-height: 100%;
 }
 
-.title-header,
-.input-section {
+.title-header {
   margin-bottom: variables.$margin-base;
+}
+
+.input-section {
+  margin-bottom: variables.$margin-base * 4;
 }
 
 .site-main {

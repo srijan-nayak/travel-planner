@@ -1,0 +1,11 @@
+@use "variables";
+
+.no-trips {
+  color: variables.$color-secondary;
+  font-size: variables.$font-size-base * 1.5;
+  text-align: center;
+
+  &--hidden {
+    display: none;
+  }
+}
