@@ -24,6 +24,7 @@ $input-padding: variables.$padding-base / 3;
     font-size: variables.$font-size-base;
     margin-bottom: variables.$margin-base / 2;
     padding: $input-padding;
+    width: 100%;
 
     &::placeholder {
       color: variables.$color-secondary;
@@ -52,18 +53,18 @@ $input-padding: variables.$padding-base / 3;
 
 @media (min-width: 576px) {
   .input-section {
-    max-width: 100%;
+    max-width: variables.$font-size-base * 35;
 
     form {
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 0.2fr min-content;
+      column-gap: variables.$margin-base / 2;
     }
 
     input {
+      height: 100%;
+      width: 100%;
       margin-bottom: 0;
-      margin-right: variables.$margin-base / 2;
-      width: variables.$font-size-base * 20;
     }
   }
 }

@@ -18,8 +18,14 @@
   <main class="site-main">
     <section class="input-section">
       <form>
-        <label for="location">Destination</label>
-        <input type="text" id="location" placeholder="Enter destination name...">
+        <div class="input-group">
+          <label for="location">Destination</label>
+          <input type="text" title="Destination name" id="location" placeholder="Enter destination name..." required>
+        </div>
+        <div class="input-group">
+          <label for="date">Date</label>
+          <input type="date" title="Trip date" id="date" required>
+        </div>
         <button type="submit">Enter</button>
       </form>
     </section>
