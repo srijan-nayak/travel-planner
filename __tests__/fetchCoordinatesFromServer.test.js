@@ -8,7 +8,7 @@ describe("fetch coordinates from server", () => {
     expect(typeof longitude).toBe("string");
   });
 
-  test("fetch with invalid input", async () => {
+  test("fetch with invalid input", () => {
     const coordinatesFetchError = new Error(
       "Could not fetch coordinates with given destination name!"
     );
