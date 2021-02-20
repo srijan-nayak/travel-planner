@@ -18,4 +18,26 @@ const fetchCoordinatesFromServer = async (locationName) => {
   }
 };
 
-export { fetchCoordinatesFromServer };
+const fetchForecastFromServer = async (days, coordinates) => {
+  const forecastFetchError = new Error(
+    "Couldn't fetch forecast with the given trip date"
+  );
+
+  const { latitude, longitude } = coordinates;
+
+  try {
+    const {
+      data: { ok, data },
+    } = await axios.get(
+      `http://localhost:3000/forecast/${days}/${latitude}/${longitude}`
+    );
+    if (!ok) {
+      throw forecastFetchError;
+    }
+    return data;
+  } catch {
+    throw forecastFetchError;
+  }
+};
+
+export { fetchCoordinatesFromServer, fetchForecastFromServer };
