@@ -37,7 +37,7 @@ const fetchWeatherForecast = async (days, coordinates) => {
     const { data: forecastArray } = response.data;
     const {
       temp: temperature,
-      precip: precipitation,
+      pop: precipitation,
       weather: { description },
     } = forecastArray[days - 1];
     const ok =
