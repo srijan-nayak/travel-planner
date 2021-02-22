@@ -3,6 +3,7 @@
 @use "header";
 @use "form";
 @use "no-trips";
+@use "trip-card";
 
 * {
   box-sizing: border-box;
@@ -31,4 +32,12 @@ body {
 .site-main {
   width: 95%;
   margin: 0 auto;
+}
+
+.trips-container {
+  .trip-card {
+    margin-bottom: variables.$margin-base;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
