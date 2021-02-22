@@ -24,6 +24,7 @@
       color: variables.$color-primary;
       font-family: variables.$font-family-fancy;
       font-size: variables.$font-size-base * 2;
+      margin-right: variables.$margin-base;
     }
 
     &__days {
@@ -41,6 +42,7 @@
 
     &__description {
       color: variables.$color-primary;
+      margin-right: variables.$margin-base;
     }
 
     &__data {

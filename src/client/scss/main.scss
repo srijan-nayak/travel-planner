@@ -41,3 +41,23 @@ body {
     margin-right: auto;
   }
 }
+
+@media (min-width: 768px) {
+  .trips-container {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: variables.$margin-base;
+    justify-content: center;
+    margin-bottom: variables.$margin-base;
+
+    .trip-card {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .trips-container {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
