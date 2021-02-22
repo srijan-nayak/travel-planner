@@ -3,6 +3,7 @@
 @use "header";
 @use "form";
 @use "no-trips";
+@use "trip-card";
 
 * {
   box-sizing: border-box;
@@ -31,4 +32,32 @@ body {
 .site-main {
   width: 95%;
   margin: 0 auto;
+}
+
+.trips-container {
+  .trip-card {
+    margin-bottom: variables.$margin-base;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .trips-container {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: variables.$margin-base;
+    justify-content: center;
+    margin-bottom: variables.$margin-base;
+
+    .trip-card {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .trips-container {
+    grid-template-columns: repeat(3, max-content);
+  }
 }
