@@ -13,7 +13,7 @@ const fetchCoordinates = async (locationName) => {
   try {
     const response = await axios.get(apiRoot, { params: queryParams });
     const { lat: latitude, lng: longitude } = response.data.geonames[0];
-    const ok = Boolean(latitude && longitude);
+    const ok = latitude !== undefined && longitude !== undefined;
     const data = ok ? { latitude, longitude } : null;
     return { ok, data };
   } catch {
@@ -37,10 +37,13 @@ const fetchWeatherForecast = async (days, coordinates) => {
     const { data: forecastArray } = response.data;
     const {
       temp: temperature,
-      precip: precipitation,
+      pop: precipitation,
       weather: { description },
     } = forecastArray[days - 1];
-    const ok = Boolean(temperature && precipitation && description);
+    const ok =
+      temperature !== undefined &&
+      precipitation !== undefined &&
+      description !== undefined;
     const data = ok ? { temperature, precipitation, description } : null;
     return { ok, data };
   } catch {
@@ -64,7 +67,7 @@ const fetchLocationPictureURL = async (locationName) => {
     const response = await axios.get(apiRoot, { params: queryParams });
     const { hits: searchResults } = response.data;
     const { webformatURL: imageURL } = searchResults[0];
-    const ok = Boolean(imageURL);
+    const ok = imageURL !== undefined;
     const data = ok ? { imageURL } : null;
     return { ok, data };
   } catch {

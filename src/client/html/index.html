@@ -6,10 +6,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Planner</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Travel Planner</h1>
+  <header class="title-header">
+    <h1>Travel Planner</h1>
+  </header>
+
+  <main class="site-main">
+    <section class="input-section">
+      <form>
+        <div class="input-group">
+          <label for="location">Destination</label>
+          <input type="text" title="Destination name" id="location" placeholder="Enter destination name...">
+        </div>
+        <div class="input-group">
+          <label for="date">Date</label>
+          <input type="date" title="Trip date" id="date">
+        </div>
+        <button type="button" class="button" id="add-trip">
+          <span class="button__text">Enter</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="trips-container">
+      <div class="no-trips">
+        No planned trips to show...
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>

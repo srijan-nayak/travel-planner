@@ -1,0 +1,52 @@
+@use "variables";
+
+.trip-card {
+  background-color: #e0e2db;
+  padding: variables.$padding-base;
+  max-width: variables.$font-size-base * 25;
+
+  img {
+    filter: saturate(70%);
+    margin-bottom: variables.$margin-base / 2;
+    height: variables.$font-size-base * 12;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .main-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: variables.$margin-base / 2;
+
+    &__location {
+      color: variables.$color-primary;
+      font-family: variables.$font-family-fancy;
+      font-size: variables.$font-size-base * 2;
+      margin-right: variables.$margin-base;
+    }
+
+    &__days {
+      color: variables.$color-secondary;
+      font-size: variables.$font-size-base * 1.5;
+    }
+  }
+
+  .forecast-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: variables.$font-size-base;
+
+    &__description {
+      color: variables.$color-primary;
+      margin-right: variables.$margin-base;
+    }
+
+    &__data {
+      color: variables.$color-secondary;
+    }
+  }
+}

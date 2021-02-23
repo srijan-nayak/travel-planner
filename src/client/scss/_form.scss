@@ -1,0 +1,112 @@
+@use "variables";
+
+$border-primary: variables.$font-size-base / 4 solid variables.$color-primary;
+$input-padding: variables.$padding-base / 3;
+
+.input-section {
+  margin: 0 auto;
+  max-width: variables.$font-size-base * 20;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  label {
+    display: none;
+  }
+
+  input {
+    background-color: variables.$color-background;
+    border: $border-primary;
+    color: variables.$color-primary;
+    font-size: variables.$font-size-base;
+    margin-bottom: variables.$margin-base / 2;
+    padding: $input-padding;
+    width: 100%;
+
+    &[type="date"]:hover {
+      cursor: pointer;
+    }
+
+    &::placeholder {
+      color: variables.$color-secondary;
+      opacity: 100%;
+    }
+  }
+
+  .button {
+    background-color: variables.$color-primary;
+    border: $border-primary;
+    padding: $input-padding;
+
+    &__text {
+      color: variables.$color-background;
+      font-size: variables.$font-size-base;
+      text-transform: uppercase;
+      transition: all 200ms;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: adjust-color(variables.$color-primary, $lightness: -5%);
+    }
+
+    &--loading {
+      position: relative;
+
+      .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: variables.$font-size-base;
+        width: variables.$font-size-base;
+        border: 0.5rem solid transparent;
+        border-top-color: variables.$color-background;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        animation: loading 1000ms ease infinite;
+      }
+
+      @keyframes loading {
+        from {
+          rotate: 0turn;
+        }
+
+        to {
+          rotate: 1turn;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .input-section {
+    max-width: variables.$font-size-base * 35;
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 0.2fr min-content;
+      column-gap: variables.$margin-base / 2;
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+}

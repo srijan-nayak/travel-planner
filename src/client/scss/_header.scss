@@ -1,0 +1,12 @@
+@use "variables";
+
+.title-header {
+  h1 {
+    color: variables.$color-primary;
+    font-family: variables.$font-family-fancy;
+    font-size: variables.$font-size-base * 4;
+    line-height: variables.$font-size-base * 4.5;
+    text-align: center;
+    padding: variables.$padding-base * 2;
+  }
+}

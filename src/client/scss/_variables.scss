@@ -1,0 +1,11 @@
+$color-primary: #5f7470;
+$color-secondary: adjust-color($color-primary, $alpha: -0.25);
+$color-background: #d2d4c8;
+
+$font-family-default: "Roboto", sans-serif;
+$font-family-fancy: "Satisfy", cursive;
+
+$font-size-base: 1.8rem;
+
+$margin-base: $font-size-base;
+$padding-base: $font-size-base;
