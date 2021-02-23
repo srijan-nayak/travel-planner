@@ -54,7 +54,7 @@ const fetchLocationPictureURLFromServer = async (locationName) => {
     }
     return data;
   } catch {
-    locationPictureURLFetchError;
+    throw locationPictureURLFetchError;
   }
 };
 
