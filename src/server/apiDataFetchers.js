@@ -1,20 +1,30 @@
 require("dotenv").config();
 const axios = require("axios").default;
 
-const fetchCoordinates = async (locationName) => {
+const fetchLocationData = async (query) => {
   const apiRoot = "http://api.geonames.org/searchJSON";
   const geonamesUsername = process.env.GEONAMES_USERNAME;
   const queryParams = {
-    q: locationName,
+    q: query,
     maxRows: 1,
     username: geonamesUsername,
   };
 
   try {
     const response = await axios.get(apiRoot, { params: queryParams });
-    const { lat: latitude, lng: longitude } = response.data.geonames[0];
-    const ok = latitude !== undefined && longitude !== undefined;
-    const data = ok ? { latitude, longitude } : null;
+    const {
+      lat: latitude,
+      lng: longitude,
+      name: locationName,
+      countryName,
+    } = response.data.geonames[0];
+    const ok =
+      latitude !== undefined &&
+      longitude !== undefined &&
+      locationName !== undefined &&
+      countryName !== undefined;
+    const coordinates = { latitude, longitude };
+    const data = ok ? { locationName, countryName, coordinates } : null;
     return { ok, data };
   } catch {
     return { ok: false, data: null };
@@ -76,7 +86,7 @@ const fetchLocationPictureURL = async (locationName) => {
 };
 
 module.exports = {
-  fetchCoordinates,
+  fetchLocationData,
   fetchWeatherForecast,
   fetchLocationPictureURL,
 };

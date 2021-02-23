@@ -1,20 +1,20 @@
 import axios from "axios";
 
-const fetchCoordinatesFromServer = async (locationName) => {
-  const coordinatesFetchError = new Error(
+const fetchLocationDataFromServer = async (query) => {
+  const locationDataFetchError = new Error(
     "Could not fetch coordinates with given destination name!"
   );
 
   try {
     const {
       data: { ok, data },
-    } = await axios.get(`http://localhost:3000/coordinates/${locationName}`);
+    } = await axios.get(`http://localhost:3000/location/${query}`);
     if (!ok) {
-      throw coordinatesFetchError;
+      throw locationDataFetchError;
     }
     return data;
   } catch {
-    throw coordinatesFetchError;
+    throw locationDataFetchError;
   }
 };
 
@@ -59,7 +59,7 @@ const fetchLocationPictureURLFromServer = async (locationName) => {
 };
 
 export {
-  fetchCoordinatesFromServer,
+  fetchLocationDataFromServer,
   fetchForecastFromServer,
   fetchLocationPictureURLFromServer,
 };
