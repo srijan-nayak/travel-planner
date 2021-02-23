@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const {
-  fetchCoordinates,
+  fetchLocationData,
   fetchWeatherForecast,
   fetchLocationPictureURL,
 } = require("./apiDataFetchers");
@@ -15,9 +15,9 @@ app.use(cors());
 
 app.use(express.static("public"));
 
-app.get("/coordinates/:location", async (request, response) => {
-  const locationName = request.params["location"];
-  const fetchResponse = await fetchCoordinates(locationName);
+app.get("/location/:query", async (request, response) => {
+  const query = request.params["query"];
+  const fetchResponse = await fetchLocationData(query);
   response.send(fetchResponse);
 });
 
