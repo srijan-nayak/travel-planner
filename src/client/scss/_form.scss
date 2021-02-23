@@ -26,6 +26,10 @@ $input-padding: variables.$padding-base / 3;
     padding: $input-padding;
     width: 100%;
 
+    &[type="date"]:hover {
+      cursor: pointer;
+    }
+
     &::placeholder {
       color: variables.$color-secondary;
       opacity: 100%;
