@@ -76,9 +76,9 @@ const fetchLocationPictureURL = async (locationName) => {
   try {
     const response = await axios.get(apiRoot, { params: queryParams });
     const { hits: searchResults } = response.data;
-    const { webformatURL: imageURL } = searchResults[0];
-    const ok = imageURL !== undefined;
-    const data = ok ? { imageURL } : null;
+    const { webformatURL: locationPictureURL } = searchResults[0];
+    const ok = locationPictureURL !== undefined;
+    const data = ok ? { locationPictureURL } : null;
     return { ok, data };
   } catch {
     return { ok: false, data: null };

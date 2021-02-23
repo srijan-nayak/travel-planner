@@ -17,9 +17,9 @@ const fetchTripData = async () => {
     query
   );
   const forecast = await fetchForecastFromServer(days, coordinates);
-  const {
-    imageURL: locationPictureURL,
-  } = await fetchLocationPictureURLFromServer(locationName);
+  const { locationPictureURL } = await fetchLocationPictureURLFromServer(
+    locationName
+  );
 
   return { locationName, tripDate, forecast, locationPictureURL };
 };
