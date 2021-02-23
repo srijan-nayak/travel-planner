@@ -40,21 +40,36 @@ const fetchForecastFromServer = async (days, coordinates) => {
   }
 };
 
-const fetchLocationPictureURLFromServer = async (locationName) => {
+const fetchLocationPictureURLFromServer = async (locationName, countryName) => {
   const locationPictureURLFetchError = new Error(
     "Could not fetch picture with given location name"
   );
 
   try {
-    const {
-      data: { ok, data },
-    } = await axios.get(`http://localhost:3000/picture/${locationName}`);
+    let locationPictureOk = false;
+    let countryPictureOk = false;
+    let data = {};
+
+    // try to fetch picture with location name
+    ({
+      data: { ok: locationPictureOk, data },
+    } = await axios.get(`http://localhost:3000/picture/${locationName}`));
+
+    // if can't fetch picture with location name, try fetching with country name
+    if (!locationPictureOk) {
+      ({
+        data: { ok: countryPictureOk, data },
+      } = await axios.get(`http://localhost:3000/picture/${countryName}`));
+    }
+
+    // check if picture was fetched with either location name or country name
+    const ok = locationPictureOk || countryPictureOk;
     if (!ok) {
       throw locationPictureURLFetchError;
     }
     return data;
   } catch {
-    locationPictureURLFetchError;
+    throw locationPictureURLFetchError;
   }
 };
 

@@ -13,13 +13,16 @@ const fetchTripData = async () => {
   const daysToGo = tripDate.diff(today, "days");
   const days = daysToGo <= 6 ? 1 : daysToGo;
 
-  const { locationName, coordinates } = await fetchLocationDataFromServer(
-    query
-  );
-  const forecast = await fetchForecastFromServer(days, coordinates);
   const {
-    imageURL: locationPictureURL,
-  } = await fetchLocationPictureURLFromServer(locationName);
+    locationName,
+    countryName,
+    coordinates,
+  } = await fetchLocationDataFromServer(query);
+  const forecast = await fetchForecastFromServer(days, coordinates);
+  const { locationPictureURL } = await fetchLocationPictureURLFromServer(
+    locationName,
+    countryName
+  );
 
   return { locationName, tripDate, forecast, locationPictureURL };
 };

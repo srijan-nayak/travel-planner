@@ -10,8 +10,8 @@ describe("fetch location picture", () => {
     expect(ok).toBe(true);
     expect(data).toBeDefined();
 
-    const { imageURL } = data;
-    expect(imageURL).toMatch(/https:\/\/pixabay\.com\/get\/.*\.jpg$/);
+    const { locationPictureURL } = data;
+    expect(locationPictureURL).toMatch(/https:\/\/pixabay\.com\/get\/.*\.jpg$/);
   });
 
   test("fetch with invalid input", async () => {
