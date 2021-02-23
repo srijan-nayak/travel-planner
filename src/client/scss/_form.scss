@@ -32,21 +32,59 @@ $input-padding: variables.$padding-base / 3;
     }
   }
 
-  button {
+  .button {
     background-color: variables.$color-primary;
     border: $border-primary;
-    color: variables.$color-background;
-    font-size: variables.$font-size-base;
     padding: $input-padding;
-    text-transform: uppercase;
-    transition: background-color 200ms, color 200ms, letter-spacing 200ms;
 
-    &:hover,
-    &:active {
-      background-color: variables.$color-background;
-      color: variables.$color-primary;
+    &__text {
+      color: variables.$color-background;
+      font-size: variables.$font-size-base;
+      text-transform: uppercase;
+      transition: all 200ms;
+    }
+
+    &:hover {
       cursor: pointer;
-      letter-spacing: 0.1em;
+    }
+
+    &:active {
+      background-color: adjust-color(variables.$color-primary, $lightness: -5%);
+    }
+
+    &--loading {
+      position: relative;
+
+      .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: variables.$font-size-base;
+        width: variables.$font-size-base;
+        border: 0.5rem solid transparent;
+        border-top-color: variables.$color-background;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        animation: loading 1000ms ease infinite;
+      }
+
+      @keyframes loading {
+        from {
+          rotate: 0turn;
+        }
+
+        to {
+          rotate: 1turn;
+        }
+      }
     }
   }
 }

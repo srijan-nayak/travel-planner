@@ -1,3 +1,5 @@
 import "./scss/main.scss";
 
-import "./js/app";
+import addTrip from "./js/app";
+
+document.querySelector("#add-trip").addEventListener("click", addTrip);
