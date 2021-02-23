@@ -3,7 +3,8 @@ import { fetchLocationPictureURLFromServer } from "../src/client/js/serverDataFe
 describe("fetch location picture URL from server", () => {
   test("fetch with valid input", async () => {
     const { locationPictureURL } = await fetchLocationPictureURLFromServer(
-      "bangalore"
+      "Bengaluru",
+      "India"
     );
     expect(locationPictureURL).toMatch(/https:\/\/pixabay\.com\/get\/.*\.jpg$/);
   });
