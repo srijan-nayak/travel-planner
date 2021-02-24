@@ -40,6 +40,7 @@ $input-padding: variables.$padding-base / 3;
     background-color: variables.$color-primary;
     border: $border-primary;
     padding: $input-padding;
+    transition: background-color 200ms;
 
     &__text {
       color: variables.$color-background;
@@ -49,15 +50,28 @@ $input-padding: variables.$padding-base / 3;
     }
 
     &:hover {
+      background-color: variables.$color-background;
       cursor: pointer;
+
+      .button__text {
+        color: variables.$color-primary;
+      }
     }
 
     &:active {
       background-color: adjust-color(variables.$color-primary, $lightness: -5%);
+
+      .button__text {
+        color: variables.$color-background;
+      }
     }
 
     &--loading {
       position: relative;
+
+      &:hover {
+        background-color: variables.$color-primary;
+      }
 
       .button__text {
         visibility: hidden;
