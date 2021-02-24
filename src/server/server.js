@@ -15,12 +15,14 @@ app.use(cors());
 
 app.use(express.static("public"));
 
+// fetch location data for a given query
 app.get("/location/:query", async (request, response) => {
   const query = request.params["query"];
   const fetchResponse = await fetchLocationData(query);
   response.send(fetchResponse);
 });
 
+// fetch forecast for some 'days' from today with the given coordinates
 app.get("/forecast/:days/:latitude/:longitude", async (request, response) => {
   const days = request.params["days"];
   const coordinates = {
@@ -31,6 +33,7 @@ app.get("/forecast/:days/:latitude/:longitude", async (request, response) => {
   response.send(fetchResponse);
 });
 
+// fetch picture url for given location name
 app.get("/picture/:location", async (request, response) => {
   const locationName = request.params["location"];
   const fetchResponse = await fetchLocationPictureURL(locationName);
